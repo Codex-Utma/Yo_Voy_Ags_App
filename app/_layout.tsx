@@ -1,5 +1,1 @@
-import { Stack } from "expo-router";
-
-export default function RootLayout() {
-  return <Stack />;
-}
+// aqui va lo del permiso de la camara y la ubicacion
