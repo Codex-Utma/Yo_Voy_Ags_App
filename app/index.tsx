@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   registerButton: {
     backgroundColor: '#6200EA',
     paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingHorizontal: 0,
     borderRadius: 5,
     marginTop: 40,
   },
