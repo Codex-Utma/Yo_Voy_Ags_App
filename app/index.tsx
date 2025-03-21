@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 const index = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.welcomeText}>BIENVENIDO</Text>
+      
       <Image
         style={styles.image}
         source={require('../assets/images/yovoy.png')}
@@ -30,46 +30,46 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   welcomeText: {
-    fontSize: 20,
+    fontSize: 45,
     fontWeight: 'bold',
     marginBottom: 70,
   },
   loginButton: {
     backgroundColor: '#FF4081',
     paddingVertical: 10,
-    paddingHorizontal: 60,
+    paddingHorizontal: 120,
     borderRadius: 5,
     marginTop: 40,
   },
   loginButtonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'medium',
     textAlign: 'center',
   },
   registerButton: {
     backgroundColor: '#6200EA',
     paddingVertical: 10,
-    paddingHorizontal: 0,
+    paddingHorizontal: 70,
     borderRadius: 5,
     marginTop: 40,
   },
   registerButtonText: {
     color: '#fff',
-    fontSize: 16,
-    fontWeight: 'light',
+    fontSize: 20,
+    fontWeight: 'medium',
     textAlign: 'center',
   },
   registerButtonText2: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   image: {
-    width: 200,
-    height:100,
-    marginBottom: 20,
+    width: 300,
+    height:150,
+    marginBottom: 130,
     marginTop: 20,
     
   },

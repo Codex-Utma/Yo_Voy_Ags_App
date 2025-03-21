@@ -10,33 +10,44 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
     <View style={styles.container}>
       {/* Navbar */}
       <View style={styles.navbar}>
-        <Image source={require('../assets/images/yovoy.png')} style={styles.logo} />
+        <Image
+            source={{ uri: 'https://ucarecdn.com/3e74fc85-432a-4f5f-852a-fb1fd2bbf9e4/-/format/auto/-/quality/smart/' }}
+            style={styles.logo}
+        />
         <TouchableOpacity>
-          <Image source={require('../assets/images/perfil.png')} style={styles.profileIcon} />
+            <Image
+            source={{ uri: 'https://ucarecdn.com/fe9f6887-91d3-4c3d-880b-f2ed4c8e9600/-/format/auto/-/quality/smart/' }}
+            style={styles.profileIcon}
+            />
         </TouchableOpacity>
-      </View>
+        </View>
 
       {/* Screen Content */}
       <View style={styles.content}>{children}</View>
 
       {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
-        <TouchableOpacity onPress={() => router.push('/home')} style={styles.navItem}>
+        
+        <TouchableOpacity onPress={() => router.push('./index')} style={styles.navItem}>
           <FontAwesome5 name="home" size={24} color="#9333EA" />
           <Text style={styles.navText}>Casa</Text>
         </TouchableOpacity>
+
         <TouchableOpacity onPress={() => router.push('/card')} style={styles.navItem}>
           <FontAwesome5 name="credit-card" size={24} color="#EC4899" />
           <Text style={styles.navText}>Tarjeta</Text>
         </TouchableOpacity>
+
         <TouchableOpacity onPress={() => router.push('/routes')} style={styles.navItem}>
           <FontAwesome5 name="bus" size={24} color="#2563EB" />
           <Text style={styles.navText}>Rutas</Text>
         </TouchableOpacity>
+
         <TouchableOpacity onPress={() => router.push('/stops')} style={styles.navItem}>
           <FontAwesome5 name="map-marker-alt" size={24} color="#84CC16" />
           <Text style={styles.navText}>Paradas</Text>
         </TouchableOpacity>
+
         <TouchableOpacity onPress={() => router.push('/reports')} style={styles.navItem}>
           <FontAwesome5 name="clipboard" size={24} color="#ffd200" />
           <Text style={styles.navText}>Reportes</Text>
