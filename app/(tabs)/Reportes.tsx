@@ -1,7 +1,6 @@
-export default function Routes() {
+export default function Reportes() {
     return (
         <>
-
         </>
     )
 }
