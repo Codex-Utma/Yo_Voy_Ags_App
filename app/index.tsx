@@ -1,19 +1,22 @@
+import { Link } from 'expo-router';
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 const index = () => {
   return (
     <View style={styles.container}>
-      
+
       <Image
         style={styles.image}
         source={require('../assets/images/yovoy.png')}
       />
-      
+
       <TouchableOpacity style={styles.loginButton}>
-        <Text style={styles.loginButtonText}>Iniciar sesión</Text>
+        <Link href={'/(tabs)/card'}>
+          <Text style={styles.loginButtonText}>Iniciar sesión</Text>
+        </Link>
       </TouchableOpacity>
-      
+
       <TouchableOpacity style={styles.registerButton}>
         <Text style={styles.registerButtonText}> ¿No tienes una cuenta?</Text>
         <Text style={styles.registerButtonText2}> Regístrate</Text>
@@ -71,7 +74,7 @@ const styles = StyleSheet.create({
     height:150,
     marginBottom: 130,
     marginTop: 20,
-    
+
   },
 });
 
