@@ -50,10 +50,6 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
           headerShown: false
         }}
       >
-        <Tabs.Screen name="Inicio" options={{
-          title: "Inicio",
-          tabBarIcon: ({ color }) => <FontAwesome5 name="home" size={24} color="#9333EA" />
-        }} />
         <Tabs.Screen name="card" options={{
           title: "Tarjeta",
           tabBarIcon: ({ color }) => <FontAwesome5 name="credit-card" size={24} color="#2563EB" />
