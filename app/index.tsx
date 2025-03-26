@@ -11,7 +11,7 @@ const index = () => {
         source={require('../assets/images/yovoy.png')}
       />
 
-      <Link href={'/(tabs)/card'} style={styles.loginButton}>
+      <Link href={'/(tabs)/Card'} style={styles.loginButton}>
         <TouchableOpacity>
           <Text style={styles.loginButtonText}>Iniciar sesión</Text>
         </TouchableOpacity>
