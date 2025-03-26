@@ -11,11 +11,11 @@ const index = () => {
         source={require('../assets/images/yovoy.png')}
       />
 
-      <TouchableOpacity style={styles.loginButton}>
-        <Link href={'/(tabs)/card'}>
+      <Link href={'/(tabs)/card'} style={styles.loginButton}>
+        <TouchableOpacity>
           <Text style={styles.loginButtonText}>Iniciar sesión</Text>
-        </Link>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </Link>
 
       <TouchableOpacity style={styles.registerButton}>
         <Text style={styles.registerButtonText}> ¿No tienes una cuenta?</Text>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 300,
-    height:150,
+    height: 150,
     marginBottom: 130,
     marginTop: 20,
 
