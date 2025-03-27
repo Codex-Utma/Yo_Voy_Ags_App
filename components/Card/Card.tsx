@@ -2,12 +2,12 @@ import axiosInstance from "@/config/axios";
 import { CardDataType } from "@/types/cardData";
 import { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import CardData from "./CardData";
 import CustomUse from "./CustomUse";
 import { FontAwesome } from "@expo/vector-icons";
 
-export default function Card({cardId}: {cardId: string}) {
+export default function Card({ cardId }: { cardId: string }) {
 
     const [cardData, setCardData] = useState<CardDataType>({} as CardDataType);
     const [loading, setLoading] = useState(true);
@@ -37,9 +37,11 @@ export default function Card({cardId}: {cardId: string}) {
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.title}>Tu Tarjeta Prepago</Text>
-            <Pressable onPress={() => setRefreshing(prev => !prev)}>
-                <Text>Click me</Text>
-            </Pressable>
+            <TouchableOpacity style={styles.refreshButton} onPress={() => setRefreshing(prev => !prev)}>
+                <FontAwesome name="refresh" size={20} color="white" />
+                <Text style={styles.refreshButtonText}>Actualizar</Text>
+            </TouchableOpacity>
+
             <Text style={styles.subtitle}>Consulta la información de tu Tarjeta Prepago</Text>
 
             <View style={styles.card}>
@@ -48,7 +50,7 @@ export default function Card({cardId}: {cardId: string}) {
                     cardData && cardData.cardUses.length > 0 ? cardData.cardUses.map((use, index) => {
                         return <CustomUse key={index} use={use} />
                     }) :
-                    <Text>No hay transacciones</Text>
+                        <Text>No hay transacciones</Text>
                 }
 
             </View>
@@ -63,43 +65,66 @@ export default function Card({cardId}: {cardId: string}) {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 3,
+        flex: 1,
         padding: 20,
-        backgroundColor: "#F8F9FA"
+        backgroundColor: "#F8F9FA",
+        paddingBottom: 20, // Agregar espacio extra en la parte inferior
     },
     title: {
-        fontSize: 22,
+        fontSize: 24,
         fontWeight: "bold",
-        textAlign: "center"
+        textAlign: "center",
+        color: "#333",
+        marginTop: 20, // Ajustar para que no quede demasiado arriba
+        marginBottom: 10,
     },
     subtitle: {
-        fontSize: 14,
+        fontSize: 16,
         textAlign: "center",
-        color: "gray",
-        marginBottom: 30,
-        marginTop: 20
+        color: "#666",
+        marginBottom: 20,
     },
     card: {
-        backgroundColor: "white",
+        backgroundColor: "#FFFFFF",
         padding: 20,
-        borderRadius: 10,
+        borderRadius: 12,
         shadowColor: "#000",
-        shadowOpacity: 0.1,
-        shadowRadius: 5
+        shadowOpacity: 0.12,
+        shadowRadius: 6,
+        shadowOffset: { width: 0, height: 3 },
+        elevation: 4,
     },
     button: {
         flexDirection: "row",
-        backgroundColor: "blue",
-        padding: 15,
-        borderRadius: 5,
+        backgroundColor: "#007BFF",
+        paddingVertical: 14,
+        paddingHorizontal: 20,
+        borderRadius: 8,
         alignItems: "center",
         justifyContent: "center",
-        marginTop: 20
+        marginTop: 25,
+        marginBottom: 30, // Espacio extra para evitar que se solape con las tabs
     },
     buttonText: {
-        color: "white",
+        color: "#FFF",
         fontSize: 16,
-        fontWeight: "bold",
-        marginLeft: 10
-    }
+        fontWeight: "600",
+        marginLeft: 10,
+    },
+    refreshButton: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#28A745", // Verde elegante para indicar actualización
+        paddingVertical: 10,
+        paddingHorizontal: 15,
+        borderRadius: 8,
+        marginBottom: 15, // Espacio extra para separarlo del resto del contenido
+    },
+    refreshButtonText: {
+        color: "#FFF",
+        fontSize: 16,
+        fontWeight: "600",
+        marginLeft: 8, // Espacio entre el icono y el texto
+    },
 });
