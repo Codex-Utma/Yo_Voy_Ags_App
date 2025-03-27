@@ -2381,7 +2381,33 @@ export const routes: RouteType[] = [
         to: "Plaza Mayor",
         frequency: "Cada 10-15 min",
         schedule: "6:00 - 22:00",
-        color: "#D81B60"
+        color: "#D81B60",
+        buses: [
+            {
+                id: 1234,
+                name: "Ruta 20",
+                location: {
+                    latitude: 21.902079,
+                    longitude: -102.287202
+                }
+            },
+            {
+                id: 5678,
+                name: "Ruta 20",
+                location: {
+                    latitude: 21.887208,
+                    longitude: -102.312494
+                }
+            },
+            {
+                id: 9012,
+                name: "Ruta 20",
+                location: {
+                    latitude: 21.868175,
+                    longitude: -102.276981
+                }
+            },
+        ]
     },
     {
         way: {
@@ -5350,6 +5376,32 @@ export const routes: RouteType[] = [
         frequency: "Cada 15-20 min",
         schedule: "6:00 - 21:30",
         color: "#1E88E5",
+        buses: [
+            {
+                id: 4321,
+                name: "Ruta 40",
+                location: {
+                    latitude: 21.915596,
+                    longitude: -102.318395
+                }
+            },
+            {
+                id: 8765,
+                name: "Ruta 40",
+                location: {
+                    latitude: 21.875124,
+                    longitude: -102.318276
+                }
+            },
+            {
+                id: 2109,
+                name: "Ruta 40",
+                location: {
+                    latitude: 21.878356,
+                    longitude: -102.256669
+                }
+            },
+        ]
     },
     {
         way: {
@@ -8804,6 +8856,32 @@ export const routes: RouteType[] = [
         frequency: "Cada 5-10 min",
         schedule: "5:00 - 22:00",
         color: "#FFC107",
+        buses: [
+            {
+                id: 1111,
+                name: "Ruta 50",
+                location: {
+                    latitude: 21.841167,
+                    longitude: -102.354412
+                }
+            },
+            {
+                id: 2222,
+                name: "Ruta 50",
+                location: {
+                    latitude: 21.866758,
+                    longitude: -102.244909
+                }
+            },
+            {
+                id: 3333,
+                name: "Ruta 50",
+                location: {
+                    latitude: 21.929369,
+                    longitude: -102.268584
+                }
+            },
+        ]
     }
 ];
 

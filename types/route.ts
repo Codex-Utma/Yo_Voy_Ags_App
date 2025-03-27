@@ -1,5 +1,14 @@
 import { FeatureCollection } from 'geojson';
 
+export interface BusLocationType {
+    id: number,
+    name: string,
+    location: {
+        latitude: number,
+        longitude: number,
+    }
+}
+
 export interface RouteType {
     way: FeatureCollection,
     name: string,
@@ -8,4 +17,5 @@ export interface RouteType {
     frequency: string,
     schedule: string,
     color: string,
+    buses: BusLocationType[],
 }

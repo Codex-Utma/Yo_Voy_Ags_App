@@ -1,6 +1,7 @@
 import { FeatureCollection } from 'geojson';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { routes } from "@/assets/buses/buses"
+import { BusLocationType } from '@/types/route';
 
 interface RouteCardProps {
     routeName: string,
@@ -11,9 +12,16 @@ interface RouteCardProps {
     color: string,
     linkColor: string,
     setSelectedRoute: (featureCollection: FeatureCollection) => void,
+    setBusLocations: (busLocations: BusLocationType[]) => void,
 }
 
-const RouteCard = ({ routeName, from, to, frequency, schedule, color, linkColor, setSelectedRoute }: RouteCardProps) => {
+const RouteCard = ({ routeName, from, to, frequency, schedule, color, linkColor, setSelectedRoute, setBusLocations }: RouteCardProps) => {
+
+    const handlePress = () => {
+        setSelectedRoute(routes.find(route => route.name === routeName)?.way!)
+        setBusLocations(routes.find(route => route.name === routeName)?.buses!)
+    }
+
     return (
         <View style={[styles.routeCard, { borderLeftColor: color }]}>
             <Text style={[styles.routeTitle, { color }]}>{routeName}</Text>
@@ -21,7 +29,7 @@ const RouteCard = ({ routeName, from, to, frequency, schedule, color, linkColor,
             <Text style={styles.routeText}>Frecuencia: {frequency}</Text>
             <Text style={styles.routeText}>Horario: {schedule}</Text>
             <TouchableOpacity style={styles.routeButton}
-                onPress={() => setSelectedRoute(routes.find(route => route.name === routeName)?.way!)}
+                onPress={handlePress}
             >
                 <Text style={[styles.routeLink, { color: linkColor }]}>{`Ver mapa de la ruta ${routeName}`}</Text>
             </TouchableOpacity>

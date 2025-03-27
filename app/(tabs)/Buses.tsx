@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, ScrollView, StyleSheet } from "react-native";
-import MapView, { Geojson } from "react-native-maps";
+import MapView, { Geojson, Marker } from "react-native-maps";
 import { routes } from "@/assets/buses/buses"
 import { FeatureCollection } from 'geojson';
 import RouteCard from "@/components/Route/RouteCard";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { BusLocationType } from "@/types/route";
 
 const BusRoutesScreen = () => {
 
   const [selectedRoute, setSelectedRoute] = useState<FeatureCollection | null>(null);
+  const [busLocations, setBusLocations] = useState<BusLocationType[] | null>(null);
+
+  console.log(busLocations)
 
   const [origin] = useState({
     latitude: 21.883311,
@@ -39,6 +43,17 @@ const BusRoutesScreen = () => {
             />
           )
         }
+        {
+          busLocations && busLocations.map((bus, index) => (
+            <Marker
+              coordinate={bus.location}
+              key={index}
+              pinColor="blue"
+            >
+              <MaterialCommunityIcons name="bus" size={32} color="black" />
+            </Marker>
+          ))
+        }
       </MapView>
       <ScrollView>
         {
@@ -53,6 +68,7 @@ const BusRoutesScreen = () => {
               color={route.color}
               linkColor={route.color}
               setSelectedRoute={setSelectedRoute}
+              setBusLocations={setBusLocations}
             />
           ))
         }
