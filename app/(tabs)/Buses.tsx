@@ -4,6 +4,7 @@ import MapView, { Geojson } from "react-native-maps";
 import { routes } from "@/assets/buses/buses"
 import { FeatureCollection } from 'geojson';
 import RouteCard from "@/components/Route/RouteCard";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const BusRoutesScreen = () => {
 
@@ -42,7 +43,7 @@ const BusRoutesScreen = () => {
               geojson={selectedRoute}
               strokeColor="#5D99F3"
               strokeWidth={5}
-              // markerComponent={<MaterialCommunityIconn name="bus-multiple" size={32} color="black" />}
+              markerComponent={<MaterialCommunityIcons name="home-variant" size={32} color="black" />}
             />
           )
         }
