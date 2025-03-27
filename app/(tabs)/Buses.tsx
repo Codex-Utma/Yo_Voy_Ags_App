@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: "#F8F9FA",
+    marginTop: 30,
   },
   screenTitle: {
     fontSize: 26,

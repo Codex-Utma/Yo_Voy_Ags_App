@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "center",
         color: "#333",
-        marginTop: 20, // Ajustar para que no quede demasiado arriba
+        marginTop: 30, // Ajustar para que no quede demasiado arriba
         marginBottom: 10,
     },
     subtitle: {
