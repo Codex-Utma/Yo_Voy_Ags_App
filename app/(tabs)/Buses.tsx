@@ -16,17 +16,9 @@ const BusRoutesScreen = () => {
   });
 
   return (
-    <ScrollView style={styles.screenContainer}>
+    <View style={styles.screenContainer}>
       <Text style={styles.screenTitle}>Encuentra tus Rutas</Text>
       <Text style={styles.screenSubtitle}>Encuentra la ruta ideal y optimiza tu tiempo de viaje</Text>
-
-      <View style={styles.searchBox}>
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Buscar por número de ruta"
-          placeholderTextColor="#999"
-        />
-      </View>
 
       <MapView
         style={styles.map}
@@ -48,22 +40,24 @@ const BusRoutesScreen = () => {
           )
         }
       </MapView>
-      {
-        routes.map((route, index) => (
-          <RouteCard
-            key={index}
-            routeName={route.name}
-            from={route.from}
-            to={route.to}
-            frequency={route.frequency}
-            schedule={route.schedule}
-            color={route.color}
-            linkColor={route.color}
-            setSelectedRoute={setSelectedRoute}
-          />
-        ))
-      }
-    </ScrollView>
+      <ScrollView>
+        {
+          routes.map((route, index) => (
+            <RouteCard
+              key={index}
+              routeName={route.name}
+              from={route.from}
+              to={route.to}
+              frequency={route.frequency}
+              schedule={route.schedule}
+              color={route.color}
+              linkColor={route.color}
+              setSelectedRoute={setSelectedRoute}
+            />
+          ))
+        }
+      </ScrollView>
+    </View>
   );
 };
 
@@ -97,13 +91,9 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     marginBottom: 16,
   },
-  searchInput: {
-    fontSize: 16,
-    color: "#333",
-  },
   map: {
     width: "100%",
-    height: 200,
+    height: 300,
     borderRadius: 10,
     marginBottom: 20,
   }
