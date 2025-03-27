@@ -6,6 +6,7 @@ import { FeatureCollection } from 'geojson';
 import RouteCard from "@/components/Route/RouteCard";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { BusLocationType } from "@/types/route";
+import BusIcon from "@/components/Route/BusIcon";
 
 const BusRoutesScreen = () => {
 
@@ -49,8 +50,9 @@ const BusRoutesScreen = () => {
               coordinate={bus.location}
               key={index}
               pinColor="blue"
+              style={{ width: 'auto', height: 'auto' }}
             >
-              <MaterialCommunityIcons name="bus" size={32} color="black" />
+              <BusIcon busId={bus.id} />
             </Marker>
           ))
         }
@@ -109,7 +111,7 @@ const styles = StyleSheet.create({
   },
   map: {
     width: "100%",
-    height: 300,
+    height: 350,
     borderRadius: 10,
     marginBottom: 20,
   }
