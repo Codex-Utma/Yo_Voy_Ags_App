@@ -1,6 +1,18 @@
 import { CardUseType } from "@/types/cardData";
 import { Text, View, StyleSheet } from "react-native";
 
+const formatDate = (isoString: string) => {
+    const date = new Date(isoString);
+    return new Intl.DateTimeFormat("es-MX", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+    }).format(date);
+};
+
 export default function CustomUse({ use }: { use: CardUseType }) {
 
     if (use.amount > 0) {
@@ -10,11 +22,12 @@ export default function CustomUse({ use }: { use: CardUseType }) {
 }
 
 function Recharge({ use }: { use: CardUseType }) {
+
     return (
         <View style={styles.transaction}>
             <View>
                 <Text style={styles.transactionType}>Recarga</Text>
-                <Text style={styles.transactionDate}>{use.createdAt}</Text>
+                <Text style={styles.transactionDate}>{formatDate(use.createdAt)}</Text>
             </View>
             <Text style={styles.transactionAmountPositive}>${use.amount}</Text>
         </View>
@@ -26,7 +39,7 @@ function Used({ use }: { use: CardUseType }) {
         <View style={styles.transaction}>
             <View>
                 <Text style={styles.transactionType}>Viaje en {use.Transfer?.Bus.Route.name}</Text>
-                <Text style={styles.transactionDate}>{use.createdAt}</Text>
+                <Text style={styles.transactionDate}>{formatDate(use.createdAt)}</Text>
             </View>
             <Text style={styles.transactionAmountNegative}>{use.amount}</Text>
         </View>
