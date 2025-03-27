@@ -2,14 +2,16 @@ import axiosInstance from "@/config/axios";
 import { CardDataType } from "@/types/cardData";
 import { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import CardData from "./CardData";
 import CustomUse from "./CustomUse";
 import { FontAwesome } from "@expo/vector-icons";
 
 export default function Card({cardId}: {cardId: string}) {
+
     const [cardData, setCardData] = useState<CardDataType>({} as CardDataType);
     const [loading, setLoading] = useState(true);
+    const [refreshing, setRefreshing] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
@@ -26,7 +28,7 @@ export default function Card({cardId}: {cardId: string}) {
             }
         }
         fetchData();
-    }, []);
+    }, [refreshing]);
 
     if (loading) {
         return <Text>Cargando...</Text>
@@ -35,6 +37,9 @@ export default function Card({cardId}: {cardId: string}) {
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.title}>Tu Tarjeta Prepago</Text>
+            <Pressable onPress={() => setRefreshing(prev => !prev)}>
+                <Text>Click me</Text>
+            </Pressable>
             <Text style={styles.subtitle}>Consulta la información de tu Tarjeta Prepago</Text>
 
             <View style={styles.card}>
