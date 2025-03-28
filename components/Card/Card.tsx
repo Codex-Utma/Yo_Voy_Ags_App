@@ -51,7 +51,7 @@ export default function Card({ cardId, setCardId }: { cardId: string; setCardId:
             <View style={styles.card}>
                 <CardData cardData={cardData} />
                 {
-                    cardData && cardData.cardUses.length > 0 ? cardData.cardUses.map((use, index) => {
+                    cardData && cardData.cardUses && cardData.cardUses.length && cardData.cardUses.length > 0 ? cardData.cardUses.map((use, index) => {
                         return <CustomUse key={index} use={use} />
                     }) :
                         <Text>No hay transacciones</Text>
