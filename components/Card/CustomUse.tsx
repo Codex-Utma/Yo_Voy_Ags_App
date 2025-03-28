@@ -3,6 +3,8 @@ import { Text, View, StyleSheet } from "react-native";
 
 const formatDate = (isoString: string) => {
     const date = new Date(isoString);
+    date.setHours(date.getHours() - 6);
+
     return new Intl.DateTimeFormat("es-MX", {
         day: "2-digit",
         month: "2-digit",
