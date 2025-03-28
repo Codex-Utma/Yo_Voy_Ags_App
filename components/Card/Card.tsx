@@ -6,8 +6,9 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-nati
 import CardData from "./CardData";
 import CustomUse from "./CustomUse";
 import { FontAwesome } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function Card({ cardId }: { cardId: string }) {
+export default function Card({ cardId, setCardId }: { cardId: string; setCardId: React.Dispatch<React.SetStateAction<string | null>> }) {
 
     const [cardData, setCardData] = useState<CardDataType>({} as CardDataType);
     const [loading, setLoading] = useState(true);
@@ -59,6 +60,15 @@ export default function Card({ cardId }: { cardId: string }) {
                 <FontAwesome name="credit-card" size={20} color="white" />
                 <Text style={styles.buttonText}> Recargar Tarjeta Prepago</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={styles.buttonRemove}
+                onPress={async () => {
+                    setCardId(null);
+                    await AsyncStorage.removeItem('code');
+                }}
+            >
+                <FontAwesome name="credit-card" size={20} color="white" />
+                <Text style={styles.buttonText}> Remover Tarjeta Prepago</Text>
+            </TouchableOpacity>
         </ScrollView>
     );
 };
@@ -103,6 +113,16 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         marginTop: 25,
+    },
+    buttonRemove: {
+        flexDirection: "row",
+        backgroundColor: "#DC3545", // Rojo para indicar eliminación
+        paddingVertical: 14,
+        paddingHorizontal: 20,
+        borderRadius: 8,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 15, // Espacio adicional para separar de otros botones
         marginBottom: 30, // Espacio extra para evitar que se solape con las tabs
     },
     buttonText: {

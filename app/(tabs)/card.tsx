@@ -40,6 +40,6 @@ export default function Screen() {
     }
 
     return (
-        <Card cardId={cardId} />
+        <Card cardId={cardId} setCardId={setCardId} />
     )
 }
