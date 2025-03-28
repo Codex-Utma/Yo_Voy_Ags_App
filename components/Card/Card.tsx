@@ -7,8 +7,11 @@ import CardData from "./CardData";
 import CustomUse from "./CustomUse";
 import { FontAwesome } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Link, useNavigation } from "expo-router";
 
 export default function Card({ cardId, setCardId }: { cardId: string; setCardId: React.Dispatch<React.SetStateAction<string | null>> }) {
+
+    const navigation = useNavigation();
 
     const [cardData, setCardData] = useState<CardDataType>({} as CardDataType);
     const [loading, setLoading] = useState(true);
@@ -56,10 +59,13 @@ export default function Card({ cardId, setCardId }: { cardId: string; setCardId:
 
             </View>
 
-            <TouchableOpacity style={styles.button}>
-                <FontAwesome name="credit-card" size={20} color="white" />
-                <Text style={styles.buttonText}> Recargar Tarjeta Prepago</Text>
-            </TouchableOpacity>
+            <Link href="/recharge" style={styles.button}>
+                <View style={styles.buttonContent}>
+                    <FontAwesome name="credit-card" size={20} color="white" />
+                    <Text style={styles.buttonText}> Recargar Tarjeta Prepago</Text>
+                </View>
+            </Link>
+
             <TouchableOpacity style={styles.buttonRemove}
                 onPress={async () => {
                     setCardId(null);
@@ -113,6 +119,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         marginTop: 25,
+    },
+    buttonContent: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 8, // Espaciado entre el icono y el texto (puedes cambiarlo según prefieras)
     },
     buttonRemove: {
         flexDirection: "row",
