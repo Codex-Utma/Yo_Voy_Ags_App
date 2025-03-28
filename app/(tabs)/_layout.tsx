@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import { Tabs, useRouter } from 'expo-router';
 
 const AppLayout = ({ children }: { children: React.ReactNode }) => {
@@ -21,9 +21,9 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
           title: "Rutas",
           tabBarIcon: ({ color }) => <FontAwesome5 name="bus" size={24} color="#ffd200" />
         }} />
-        <Tabs.Screen name="Paradas" options={{
-          title: "Paradas",
-          tabBarIcon: ({ color }) => <FontAwesome5 name="map-marker-alt" size={24} color="#84CC16" />
+        <Tabs.Screen name="RealTime" options={{
+          title: "Feedback",
+          tabBarIcon: ({ color }) => <MaterialIcons name="feedback" size={24} color="#84CC16" />
         }} />
         <Tabs.Screen name="Reportes" options={{
           title: "Reportes",
