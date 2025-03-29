@@ -29,6 +29,10 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
           title: "Reportes",
           tabBarIcon: ({ color }) => <FontAwesome5 name="clipboard" size={24} color="#EC4899" />
         }} />
+        <Tabs.Screen name="Reactivate" options={{
+          title: "Reactivar",
+          tabBarIcon: ({ color }) => <FontAwesome5 name="edit" size={24} color="#9333EA" />
+        }} />
       </Tabs>
     </>
   );
