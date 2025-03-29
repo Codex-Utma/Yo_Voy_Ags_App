@@ -10,35 +10,35 @@ const EvaluarViaje = () => {
   const [experienciaGeneral, setExperienciaGeneral] = useState<number | null>(null);
   
   const opcionesOcupacion = [
-    { label: "Vacío", icon: "chair" },
+    { label: "Saturado", icon: "users" },
+    { label: "Lleno", icon: "user-friends" },
+    { label: "Moderado", icon: "people-arrows" },
     { label: "Pocas personas", icon: "user" },
-    { label: "Moderado", icon: "user-friends" },
-    { label: "Lleno", icon: "users" },
-    { label: "Saturado", icon: "people-arrows" }
+    { label: "Vacío", icon: "chair" }
   ];
 
   const opcionesConducta = [
-    { label: "Excelente", icon: "grin" },
-    { label: "Buena", icon: "smile" },
-    { label: "Regular", icon: "meh" },
+    { label: "Terrible", icon: "angry" },
     { label: "Mala", icon: "frown" },
-    { label: "Terrible", icon: "angry" }
+    { label: "Regular", icon: "meh" },
+    { label: "Buena", icon: "smile" },
+    { label: "Excelente", icon: "grin" }
   ];
 
   const opcionesFormaManejo = [
-    { label: "Muy seguro", icon: "shield-alt" },
-    { label: "Seguro", icon: "thumbs-up" },
+    { label: "Agresivo", icon: "skull-crossbones" },
+    { label: "Riesgoso", icon: "exclamation" },
     { label: "Neutral", icon: "hand-paper" },
-    { label: "Riesgoso", icon: "exclamation-circle" },
-    { label: "Agresivo", icon: "skull-crossbones" }
+    { label: "Seguro", icon: "check" },
+    { label: "Muy seguro", icon: "shield-alt" }
   ];
 
   const opcionesExperiencia = [
-    { label: "Excelente", icon: "star" },
-    { label: "Buena", icon: "star-half-alt" },
-    { label: "Regular", icon: "star-of-life" },
-    { label: "Mala", icon: "star-and-crescent" },
-    { label: "Terrible", icon: "skull-crossbones" }
+    { label: "Terrible", icon: "times-circle" },
+    { label: "Mala", icon: "thumbs-down" },
+    { label: "Regular", icon: "adjust" },
+    { label: "Buena", icon: "thumbs-up" },
+    { label: "Excelente", icon: "star" }
   ];
 
   const renderOpciones = (
@@ -82,13 +82,13 @@ const EvaluarViaje = () => {
       />
 
       {/* Preguntas con opciones de selección */}
-      <Text style={styles.label}>Ocupación del autobús (Vacío a Lleno)</Text>
+      <Text style={styles.label}>Ocupación del autobús</Text>
       {renderOpciones(opcionesOcupacion, ocupacionBus, setOcupacionBus, "#EC4899")}
 
-      <Text style={styles.label}>Conducta del chofer (Excelente a Mala)</Text>
+      <Text style={styles.label}>Conducta del chofer</Text>
       {renderOpciones(opcionesConducta, conductaChofer, setConductaChofer, "#84CC16")}
 
-      <Text style={styles.label}>Forma de manejo (Seguro a Agresivo)</Text>
+      <Text style={styles.label}>Forma de manejo</Text>
       {renderOpciones(opcionesFormaManejo, formaManejo, setFormaManejo, "#2563EB")}
 
       <Text style={styles.label}>Experiencia en general</Text>
