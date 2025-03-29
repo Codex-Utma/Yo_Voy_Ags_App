@@ -13,8 +13,6 @@ const BusRoutesScreen = () => {
   const [selectedRoute, setSelectedRoute] = useState<FeatureCollection | null>(null);
   const [busLocations, setBusLocations] = useState<BusLocationType[] | null>(null);
 
-  console.log(busLocations)
-
   const [origin] = useState({
     latitude: 21.883311,
     longitude: -102.292611
@@ -70,6 +68,7 @@ const BusRoutesScreen = () => {
               color={route.color}
               linkColor={route.color}
               setSelectedRoute={setSelectedRoute}
+              busLocations={busLocations}
               setBusLocations={setBusLocations}
             />
           ))

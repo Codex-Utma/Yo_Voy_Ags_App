@@ -1,5 +1,5 @@
 import { FeatureCollection } from 'geojson';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { routes } from "@/assets/buses/buses"
 import { BusLocationType } from '@/types/route';
 
@@ -12,10 +12,11 @@ interface RouteCardProps {
     color: string,
     linkColor: string,
     setSelectedRoute: (featureCollection: FeatureCollection) => void,
+    busLocations: BusLocationType[] | null,
     setBusLocations: (busLocations: BusLocationType[]) => void,
 }
 
-const RouteCard = ({ routeName, from, to, frequency, schedule, color, linkColor, setSelectedRoute, setBusLocations }: RouteCardProps) => {
+const RouteCard = ({ routeName, from, to, frequency, schedule, color, linkColor, setSelectedRoute, setBusLocations, busLocations }: RouteCardProps) => {
 
     const handlePress = () => {
         setSelectedRoute(routes.find(route => route.name === routeName)?.way!)
@@ -33,6 +34,22 @@ const RouteCard = ({ routeName, from, to, frequency, schedule, color, linkColor,
             >
                 <Text style={[styles.routeLink, { color: linkColor }]}>{`Ver mapa de la ruta ${routeName}`}</Text>
             </TouchableOpacity>
+            {
+                busLocations && busLocations.length > 0 ? (
+                    <View style={{ marginTop: 10 }}>
+                        <Text style={styles.routeText}>Buses en ruta:</Text>
+                        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.busScrollView}>
+                            {busLocations.map(bus => (
+                                <TouchableOpacity key={bus.id} style={styles.busButton}
+                                    onPress={() => console.log(bus.id)}
+                                >
+                                    <Text style={styles.busButtonText}>{bus.id}</Text>
+                                </TouchableOpacity>
+                            ))}
+                        </ScrollView>
+                    </View>
+                ) : null
+            }
         </View>
     );
 };
@@ -70,5 +87,21 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: "bold",
         textDecorationLine: "underline",
-    }
+    },
+    busScrollView: {
+        marginTop: 8,
+        flexDirection: 'row',
+    },
+    busButton: {
+        backgroundColor: '#007bff',
+        paddingVertical: 8,
+        paddingHorizontal: 12,
+        borderRadius: 6,
+        marginRight: 10,
+    },
+    busButtonText: {
+        color: '#fff',
+        fontSize: 14,
+        fontWeight: 'bold',
+    },
 });
