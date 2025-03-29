@@ -23,10 +23,10 @@ export default function EvaluarViaje({ busId }: { busId: number }) {
       await axiosRealTimeInstance.post("encuestas", {
         idCamion: Number(busId),
         tiempoEspera: Number(tiempoEspera),
-        calificacionCupo: Number(ocupacionBus),
-        calificacionConductor: Number(conductaChofer),
-        calificacionConduccion: Number(formaManejo),
-        calificacionServicio: Number(experienciaGeneral),
+        calificacionCupo: Number(ocupacionBus + 1),
+        calificacionConductor: Number(conductaChofer + 1),
+        calificacionConduccion: Number(formaManejo + 1),
+        calificacionServicio: Number(experienciaGeneral + 1)
       });
       setTiempoEspera("");
       setOcupacionBus(null);
@@ -36,7 +36,6 @@ export default function EvaluarViaje({ busId }: { busId: number }) {
       alert("Evaluación enviada con éxito. ¡Gracias por tu feedback!");
       navigate.goBack();
     } catch (error) {
-      console.log(error);
       alert("Ocurrió un error al enviar la evaluación. Por favor intenta nuevamente más tarde.");
     }
   }
