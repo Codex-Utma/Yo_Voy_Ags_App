@@ -2,6 +2,7 @@ import { FeatureCollection } from 'geojson';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { routes } from "@/assets/buses/buses"
 import { BusLocationType } from '@/types/route';
+import { Link } from 'expo-router';
 
 interface RouteCardProps {
     routeName: string,
@@ -40,11 +41,9 @@ const RouteCard = ({ routeName, from, to, frequency, schedule, color, linkColor,
                         <Text style={styles.routeText}>Buses en ruta:</Text>
                         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.busScrollView}>
                             {busLocations.map(bus => (
-                                <TouchableOpacity key={bus.id} style={styles.busButton}
-                                    onPress={() => console.log(bus.id)}
-                                >
+                                <Link href={`/${bus.id}`} key={bus.id} style={styles.busButton}>
                                     <Text style={styles.busButtonText}>{bus.id}</Text>
-                                </TouchableOpacity>
+                                </Link>
                             ))}
                         </ScrollView>
                     </View>
