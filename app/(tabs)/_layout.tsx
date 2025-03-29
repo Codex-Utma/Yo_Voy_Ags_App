@@ -19,7 +19,7 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
         }} />
         <Tabs.Screen name="Buses" options={{
           title: "Rutas",
-          tabBarIcon: ({ color }) => <FontAwesome5 name="bus" size={24} color="#ffd200" />
+          tabBarIcon: ({ color }) => <FontAwesome5 name="bus" size={24} color="#9333EA" />
         }} />
         <Tabs.Screen name="RealTime" options={{
           title: "Feedback",
@@ -31,7 +31,11 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
         }} />
         <Tabs.Screen name="Reactivate" options={{
           title: "Reactivar",
-          tabBarIcon: ({ color }) => <FontAwesome5 name="edit" size={24} color="#9333EA" />
+          tabBarIcon: ({ color }) => <FontAwesome5 name="edit" size={24} color="#ffd200" />
+        }} />
+        <Tabs.Screen name="Chat-Bot" options={{
+          title: "Bot",
+          tabBarIcon: ({ color }) => <FontAwesome5 name="robot" size={24} color="#2563EB" />
         }} />
       </Tabs>
     </>

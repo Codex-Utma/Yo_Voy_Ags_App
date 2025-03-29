@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-  ]
+, "components/bot/getBotpressWebChat.jsx", "components/bot/BpWidget.jsx", "components/bot/BpIncommingMessagesListener.jsx", "app/(tabs)/Chat-Bot.jsx"  ]
 }
