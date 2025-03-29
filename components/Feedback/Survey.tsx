@@ -28,6 +28,11 @@ export default function EvaluarViaje({ busId }: { busId: number }) {
         calificacionConduccion: Number(formaManejo),
         calificacionServicio: Number(experienciaGeneral),
       });
+      setTiempoEspera("");
+      setOcupacionBus(null);
+      setConductaChofer(null);
+      setFormaManejo(null);
+      setExperienciaGeneral(null);
       alert("Evaluación enviada con éxito. ¡Gracias por tu feedback!");
       navigate.goBack();
     } catch (error) {
