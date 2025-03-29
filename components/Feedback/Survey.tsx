@@ -1,13 +1,40 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
+import axiosRealTimeInstance from "@/config/axiosRealTime";
+import { useNavigation } from "expo-router";
 
-const EvaluarViaje = () => {
+export default function EvaluarViaje({ busId }: { busId: number }) {
+
+  const navigate = useNavigation();
+
   const [tiempoEspera, setTiempoEspera] = useState("");
   const [ocupacionBus, setOcupacionBus] = useState<number | null>(null);
   const [conductaChofer, setConductaChofer] = useState<number | null>(null);
   const [formaManejo, setFormaManejo] = useState<number | null>(null);
   const [experienciaGeneral, setExperienciaGeneral] = useState<number | null>(null);
+
+  const handlePress = async () => {
+    try {
+      if (!tiempoEspera || ocupacionBus === null || conductaChofer === null || formaManejo === null || experienciaGeneral === null) {
+        alert("Por favor completa todos los campos antes de enviar la evaluación.");
+        return;
+      }
+      await axiosRealTimeInstance.post("encuestas", {
+        idCamion: Number(busId),
+        tiempoEspera: Number(tiempoEspera),
+        calificacionCupo: Number(ocupacionBus),
+        calificacionConductor: Number(conductaChofer),
+        calificacionConduccion: Number(formaManejo),
+        calificacionServicio: Number(experienciaGeneral),
+      });
+      alert("Evaluación enviada con éxito. ¡Gracias por tu feedback!");
+      navigate.goBack();
+    } catch (error) {
+      console.log(error);
+      alert("Ocurrió un error al enviar la evaluación. Por favor intenta nuevamente más tarde.");
+    }
+  }
 
   const opcionesOcupacion = [
     { label: "Vacío", icon: "chair" },
@@ -94,7 +121,9 @@ const EvaluarViaje = () => {
       <Text style={styles.label}>Experiencia en general</Text>
       {renderOpciones(opcionesExperiencia, experienciaGeneral, setExperienciaGeneral, "#F6CA00")}
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button}
+        onPress={handlePress}
+      >
         <Text style={styles.buttonText}>Enviar Evaluación</Text>
       </TouchableOpacity>
     </View>
@@ -162,5 +191,3 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
 });
-
-export default EvaluarViaje;

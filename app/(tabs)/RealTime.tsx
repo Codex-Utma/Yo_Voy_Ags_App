@@ -55,7 +55,7 @@ const RealTimeData = () => {
   return (
     <>
       {/* <SurvayFeedback usedLastHourData={usedLastHourData} /> */}
-      <SurvayFeedback />
+      <SurvayFeedback busId={usedLastHourData.Bus.id} />
     </>
   );
 };
