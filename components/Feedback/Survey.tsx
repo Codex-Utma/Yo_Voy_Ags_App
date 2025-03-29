@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#f9fafb",
     padding: 16,
+    marginTop: 30,
   },
   header: {
     fontSize: 20,
@@ -131,12 +132,12 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 10,
     fontSize: 16,
-    marginBottom: 16,
+    marginBottom: 24,
   },
   opcionesContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 16,
+    marginBottom: 20,
   },
   opcion: {
     alignItems: "center",
