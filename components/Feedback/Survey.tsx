@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-const SurvayFeedback = () => {
+const EvaluarViaje = () => {
   const [tiempoEspera, setTiempoEspera] = useState("");
   const [ocupacionBus, setOcupacionBus] = useState<number | null>(null);
   const [conductaChofer, setConductaChofer] = useState<number | null>(null);
@@ -12,33 +12,33 @@ const SurvayFeedback = () => {
   const opcionesOcupacion = [
     { label: "Vacío", icon: "chair" },
     { label: "Pocas personas", icon: "user" },
-    { label: "Moderado", icon: "user-friends" },
-    { label: "Lleno", icon: "users" },
-    { label: "Saturado", icon: "people-arrows" }
+    { label: "Moderado", icon: "people-arrows" },
+    { label: "Lleno", icon: "user-friends" },
+    { label: "Saturado", icon: "users" }
   ];
 
   const opcionesConducta = [
-      { label: "Terrible", icon: "angry" },
-      { label: "Mala", icon: "frown" },
-      { label: "Regular", icon: "meh" },
-      { label: "Buena", icon: "smile" },
-      { label: "Excelente", icon: "grin" }
+    { label: "Terrible", icon: "angry" },
+    { label: "Mala", icon: "frown" },
+    { label: "Regular", icon: "meh" },
+    { label: "Buena", icon: "smile" },
+    { label: "Excelente", icon: "grin" }
   ];
 
   const opcionesFormaManejo = [
-      { label: "Agresivo", icon: "skull-crossbones" },
-      { label: "Riesgoso", icon: "exclamation-circle" },
-      { label: "Neutral", icon: "hand-paper" },
-      { label: "Seguro", icon: "thumbs-up" },
-      { label: "Muy seguro", icon: "shield-alt" }
+    { label: "Agresivo", icon: "skull-crossbones" },
+    { label: "Riesgoso", icon: "exclamation" },
+    { label: "Neutral", icon: "hand-paper" },
+    { label: "Seguro", icon: "check" },
+    { label: "Muy seguro", icon: "shield-alt" }
   ];
 
   const opcionesExperiencia = [
-      { label: "Terrible", icon: "skull-crossbones" },
-      { label: "Mala", icon: "star-and-crescent" },
-      { label: "Regular", icon: "star-of-life" },
-      { label: "Buena", icon: "star-half-alt" },
-      { label: "Excelente", icon: "star" }
+    { label: "Terrible", icon: "times-circle" },
+    { label: "Mala", icon: "thumbs-down" },
+    { label: "Regular", icon: "adjust" },
+    { label: "Buena", icon: "thumbs-up" },
+    { label: "Excelente", icon: "star" }
   ];
 
   const renderOpciones = (
@@ -82,13 +82,13 @@ const SurvayFeedback = () => {
       />
 
       {/* Preguntas con opciones de selección */}
-      <Text style={styles.label}>Ocupación del autobús (Vacío a Lleno)</Text>
+      <Text style={styles.label}>Ocupación del autobús</Text>
       {renderOpciones(opcionesOcupacion, ocupacionBus, setOcupacionBus, "#EC4899")}
 
-      <Text style={styles.label}>Conducta del chofer (Excelente a Mala)</Text>
+      <Text style={styles.label}>Conducta del chofer</Text>
       {renderOpciones(opcionesConducta, conductaChofer, setConductaChofer, "#84CC16")}
 
-      <Text style={styles.label}>Forma de manejo (Seguro a Agresivo)</Text>
+      <Text style={styles.label}>Forma de manejo</Text>
       {renderOpciones(opcionesFormaManejo, formaManejo, setFormaManejo, "#2563EB")}
 
       <Text style={styles.label}>Experiencia en general</Text>
@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#f9fafb",
     padding: 16,
-    marginTop: 30,
   },
   header: {
     fontSize: 20,
@@ -163,4 +162,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SurvayFeedback;
+export default EvaluarViaje;
