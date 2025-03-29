@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-nati
 import { routes } from "@/assets/buses/buses"
 import { BusLocationType } from '@/types/route';
 import { Link } from 'expo-router';
+import { useState } from 'react';
 
 interface RouteCardProps {
     routeName: string,
@@ -19,9 +20,12 @@ interface RouteCardProps {
 
 const RouteCard = ({ routeName, from, to, frequency, schedule, color, linkColor, setSelectedRoute, setBusLocations, busLocations }: RouteCardProps) => {
 
+    const [busesList, setBusesList] = useState<BusLocationType[]>([])
+
     const handlePress = () => {
         setSelectedRoute(routes.find(route => route.name === routeName)?.way!)
         setBusLocations(routes.find(route => route.name === routeName)?.buses!)
+        setBusesList(routes.find(route => route.name === routeName)?.buses!)
     }
 
     return (
@@ -36,11 +40,11 @@ const RouteCard = ({ routeName, from, to, frequency, schedule, color, linkColor,
                 <Text style={[styles.routeLink, { color: linkColor }]}>{`Ver mapa de la ruta ${routeName}`}</Text>
             </TouchableOpacity>
             {
-                busLocations && busLocations.length > 0 ? (
+                busesList && busesList.length > 0 ? (
                     <View style={{ marginTop: 10 }}>
                         <Text style={styles.routeText}>Buses en ruta:</Text>
                         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.busScrollView}>
-                            {busLocations.map(bus => (
+                            {busesList.map(bus => (
                                 <Link href={`/${bus.id}`} key={bus.id} style={styles.busButton}>
                                     <Text style={styles.busButtonText}>{bus.id}</Text>
                                 </Link>
