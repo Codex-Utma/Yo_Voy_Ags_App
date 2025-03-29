@@ -30,16 +30,15 @@ export default function ChatBot() {
 
  const botpressWebChatRef = useRef();
 
-  const sendExampleEvent = () => {
-    botpressWebChatRef.current?.sendEvent({ type: "toggle" });
-  }
-  const sendExamplePayload = () => {
-    botpressWebChatRef.current?.sendPayload({ type: "text", text: "hello" });
-  }
-  const changeExampleConfig = () => {
-    botpressWebChatRef.current?.mergeConfig({ botName: Math.random() });
-  }
-
+  // const sendExampleEvent = () => {
+  //   botpressWebChatRef.current?.sendEvent({ type: "toggle" });
+  // }
+  // const sendExamplePayload = () => {
+  //   botpressWebChatRef.current?.sendPayload({ type: "text", text: "hello" });
+  // }
+  // const changeExampleConfig = () => {
+  //   botpressWebChatRef.current?.mergeConfig({ botName: Math.random() });
+  // }
 
   return (
     <View style={{ flex: 1, flexDirection: "column" }}>
@@ -56,7 +55,7 @@ export default function ChatBot() {
             console.log("event from widget", event);
           }}
         />
-        <Button
+        {/* <Button
           onPress={sendExampleEvent}
           title="Toggle webchat"
         />
@@ -67,7 +66,7 @@ export default function ChatBot() {
         <Button
           onPress={sendExamplePayload}
           title="send message"
-        />
+        /> */}
       </View>
       {/* In case your webchat is not rendered and you want to catch bot messages */}
       <BpIncommingMessagesListener
