@@ -3,6 +3,7 @@ import { UsedLastHourType } from "@/types/cardUsedLastHour";
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { Picker } from "@react-native-picker/picker";
+import DocumentosRequeridos from "./AddFiles";
 
 interface ReportOptionsType {
     id: number;
@@ -87,6 +88,8 @@ export default function Form({ usedLastHourData }: { usedLastHourData: UsedLastH
                 value={description}
                 onChangeText={setDescription}
             />
+
+            <DocumentosRequeridos />
 
             {/* Botones de acción */}
             <TouchableOpacity style={styles.buttonSave} onPress={handleSubmit}>
